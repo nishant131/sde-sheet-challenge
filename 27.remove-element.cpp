@@ -3,11 +3,14 @@ using namespace std;
 class Solution {
 public:
     int removeElement(vector<int>& nums, int val) {
-        int start=0, end=nums.size()-1, ans=0;
+        int start=0, n=nums.size(), end=n-1;
+        if (n==0)
+            return 0;
+        
         while(start<end)
         {
             if(nums[end] == val)
-                --end;
+                end--;
             else if(nums[start] == val)
             {
                 swap(nums[start], nums[end]);
@@ -17,8 +20,9 @@ public:
             else
                 start++;
         }
-        while(end<n && nums[end]!=val)
+        while(end<n && nums[end]!=val)   
             ++end;
         return end;
+
     }
 };
